@@ -26,6 +26,22 @@
 
   #nav-mobile-menu:not(.open){display:none!important}
   #nav-mobile-menu.open{display:flex!important}
+
+  /* hover 복원 — Design 원본 style-hover 스펙을 CSS :hover로 이관 (색상 토큰 유지) */
+  .mqh1{transition:filter .18s ease, transform .18s ease, background-color .18s ease, border-color .18s ease, color .18s ease}
+  .mqh1:hover{color:#f2f4f7 !important}
+  .mqh2{transition:filter .18s ease, transform .18s ease, background-color .18s ease, border-color .18s ease, color .18s ease}
+  .mqh2:hover{filter:brightness(1.06) !important}
+  .mqh3{transition:filter .18s ease, transform .18s ease, background-color .18s ease, border-color .18s ease, color .18s ease}
+  .mqh3:hover{background:rgba(255,255,255,0.05) !important; color:#f2f4f7 !important}
+  .mqh4{transition:filter .18s ease, transform .18s ease, background-color .18s ease, border-color .18s ease, color .18s ease}
+  .mqh4:hover{filter:brightness(1.06) !important; transform:translateY(-1px) !important}
+  .mqh5{transition:filter .18s ease, transform .18s ease, background-color .18s ease, border-color .18s ease, color .18s ease}
+  .mqh5:hover{background:rgba(255,255,255,0.08) !important}
+  .mqh6{transition:filter .18s ease, transform .18s ease, background-color .18s ease, border-color .18s ease, color .18s ease}
+  .mqh6:hover{border-color:rgba(198,245,66,0.35) !important; transform:translateY(-4px) !important}
+  .mq-logo{transition:opacity .18s ease}
+  .mq-logo:hover{opacity:.82}
 </style>
 </head>
 <body>
@@ -35,15 +51,15 @@
 <header style="position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(8,10,15,0.72);border-bottom:1px solid rgba(255,255,255,0.06)">
   <nav style="max-width:1180px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px">
     <div style="display:flex;align-items:center;gap:20px">
-      <a href="#top" style="display:flex;flex-direction:column;line-height:1;text-decoration:none">
+      <a href="#top" class="mq-logo" style="display:flex;flex-direction:column;line-height:1;text-decoration:none">
         <span style="font-weight:800;font-size:22px;letter-spacing:-0.02em;color:#f2f4f7">modiq</span>
         <span style="font-weight:700;font-size:7.5px;letter-spacing:0.24em;color:#c6f542;margin-top:3px">TALENT AGENCY OS</span>
       </a>
       <span id="nav-version" style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;color:#6b7180;border:1px solid rgba(255,255,255,0.1);border-radius:999px;padding:3px 9px">v1.2</span>
     </div>
     <div style="display:flex;align-items:center;gap:10px">
-      <a id="nav-compare-link" href="#compare" style="color:#9096a1;font-size:14px;font-weight:500;padding:8px 10px" style-hover="color:#f2f4f7">해외 툴 비교</a>
-      <a href="https://modiq.kr" style="background:#c6f542;color:#0a0c10;font-weight:700;font-size:14px;padding:11px 18px;border-radius:999px;box-shadow:0 6px 22px rgba(198,245,66,0.22)" style-hover="filter:brightness(1.06)">60일 무료로 시작</a>
+      <a id="nav-compare-link" href="#compare" style="color:#9096a1;font-size:14px;font-weight:500;padding:8px 10px" class="mqh1">해외 툴 비교</a>
+      <a href="https://modiq.kr" style="background:#c6f542;color:#0a0c10;font-weight:700;font-size:14px;padding:11px 18px;border-radius:999px;box-shadow:0 6px 22px rgba(198,245,66,0.22)" class="mqh2">60일 무료로 시작</a>
       <button id="nav-hamburger" onclick="mqToggleMenu()" aria-label="메뉴 열기" aria-expanded="false" style="display:none;align-items:center;justify-content:center;width:44px;height:44px;margin:-4px -8px -4px 2px;background:none;border:none;cursor:pointer;color:#f2f4f7">
         <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
           
@@ -56,8 +72,8 @@
   </nav>
   
   <div id="nav-mobile-menu" style="border-top:1px solid rgba(255,255,255,0.06);padding:8px 16px 16px;display:flex;flex-direction:column;gap:4px">
-    <a href="#compare" onclick="mqCloseMenu()" style="color:#c3c8d1;font-size:16px;font-weight:500;padding:14px 8px;border-radius:12px" style-hover="background:rgba(255,255,255,0.05);color:#f2f4f7">해외 툴 비교</a>
-    <a href="#start" onclick="mqCloseMenu()" style="color:#c3c8d1;font-size:16px;font-weight:500;padding:14px 8px;border-radius:12px" style-hover="background:rgba(255,255,255,0.05);color:#f2f4f7">요금 안내</a>
+    <a href="#compare" onclick="mqCloseMenu()" style="color:#c3c8d1;font-size:16px;font-weight:500;padding:14px 8px;border-radius:12px" class="mqh3">해외 툴 비교</a>
+    <a href="#start" onclick="mqCloseMenu()" style="color:#c3c8d1;font-size:16px;font-weight:500;padding:14px 8px;border-radius:12px" class="mqh3">요금 안내</a>
     <a href="https://modiq.kr" style="margin-top:6px;text-align:center;background:#c6f542;color:#0a0c10;font-weight:700;font-size:16px;padding:15px 18px;border-radius:999px">60일 무료로 시작</a>
   </div>
   
@@ -82,8 +98,8 @@
       모델 10명부터 쓰는 탤런트 에이전시 운영 플랫폼 — 섭외·일정·정산을 하나로
     </p>
     <div style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center;align-items:center">
-      <a href="https://modiq.kr" style="background:#c6f542;color:#0a0c10;font-weight:700;font-size:16px;padding:16px 30px;border-radius:999px;box-shadow:0 10px 34px rgba(198,245,66,0.28)" style-hover="filter:brightness(1.06);transform:translateY(-1px)">60일 무료로 시작하기</a>
-      <a href="#top" style="display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,0.04);color:#f2f4f7;font-weight:600;font-size:16px;padding:16px 26px;border-radius:999px;border:1px solid rgba(255,255,255,0.14)" style-hover="background:rgba(255,255,255,0.08)">
+      <a href="https://modiq.kr" style="background:#c6f542;color:#0a0c10;font-weight:700;font-size:16px;padding:16px 30px;border-radius:999px;box-shadow:0 10px 34px rgba(198,245,66,0.28)" class="mqh4">60일 무료로 시작하기</a>
+      <a href="#top" style="display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,0.04);color:#f2f4f7;font-weight:600;font-size:16px;padding:16px 26px;border-radius:999px;border:1px solid rgba(255,255,255,0.14)" class="mqh5">
         <span style="color:#c6f542">▶</span> 1분 데모 보기
       </a>
     </div>
@@ -118,22 +134,22 @@
     <h2 style="font-size:clamp(28px,4.4vw,46px);font-weight:800;letter-spacing:-0.025em;line-height:1.15;margin:0">혹시 지금, 이렇게 일하고 계신가요?</h2>
   </div>
   <div style="display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))">
-    <div style="background:#12141b;border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:28px" style-hover="border-color:rgba(198,245,66,0.35);transform:translateY(-4px)">
+    <div style="background:#12141b;border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:28px" class="mqh6">
       <div style="font-family:ui-monospace,monospace;font-size:13px;font-weight:700;color:#6b7180;margin-bottom:16px">01</div>
       <h3 style="font-size:19px;font-weight:700;margin:0 0 10px">카톡·엑셀에 흩어진 정보</h3>
       <p style="font-size:15px;color:#9096a1;line-height:1.65;margin:0">문의는 단톡방, 일정은 엑셀, 서류는 메일. 전체를 한눈에 보는 사람이 아무도 없습니다.</p>
     </div>
-    <div style="background:#12141b;border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:28px" style-hover="border-color:rgba(198,245,66,0.35);transform:translateY(-4px)">
+    <div style="background:#12141b;border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:28px" class="mqh6">
       <div style="font-family:ui-monospace,monospace;font-size:13px;font-weight:700;color:#6b7180;margin-bottom:16px">02</div>
       <h3 style="font-size:19px;font-weight:700;margin:0 0 10px">매번 손으로 만드는 서류</h3>
       <p style="font-size:15px;color:#9096a1;line-height:1.65;margin:0">컴카드·거래명세서·원천징수 영수증을 일일이 수작업. 한 건 보내는 데 30분이 걸립니다.</p>
     </div>
-    <div style="background:#12141b;border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:28px" style-hover="border-color:rgba(198,245,66,0.35);transform:translateY(-4px)">
+    <div style="background:#12141b;border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:28px" class="mqh6">
       <div style="font-family:ui-monospace,monospace;font-size:13px;font-weight:700;color:#6b7180;margin-bottom:16px">03</div>
       <h3 style="font-size:19px;font-weight:700;margin:0 0 10px">한순간의 더블부킹</h3>
       <p style="font-size:15px;color:#9096a1;line-height:1.65;margin:0">같은 모델이 같은 시간, 두 현장에 잡힙니다. 사람이 확인하다 결국 위약금 사고가 납니다.</p>
     </div>
-    <div style="background:#12141b;border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:28px" style-hover="border-color:rgba(198,245,66,0.35);transform:translateY(-4px)">
+    <div style="background:#12141b;border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:28px" class="mqh6">
       <div style="font-family:ui-monospace,monospace;font-size:13px;font-weight:700;color:#6b7180;margin-bottom:16px">04</div>
       <h3 style="font-size:19px;font-weight:700;margin:0 0 10px">새는 미수금</h3>
       <p style="font-size:15px;color:#9096a1;line-height:1.65;margin:0">어떤 건이 입금됐는지 월말에야 압니다. 회수가 늦어질수록 현금흐름이 묶입니다.</p>
@@ -167,19 +183,19 @@
   </div>
 
   <div style="display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))">
-    <div style="background:#12141b;border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:26px" style-hover="border-color:rgba(198,245,66,0.35);transform:translateY(-4px)">
+    <div style="background:#12141b;border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:26px" class="mqh6">
       <h3 style="font-size:18px;font-weight:700;margin:0 0 9px;color:#c6f542">컴카드 자동 생성</h3>
       <p style="font-size:15px;color:#9096a1;line-height:1.65;margin:0">사진만 고르면 로고 박힌 컴카드 완성. PDF·링크로 바로 발송.</p>
     </div>
-    <div style="background:#12141b;border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:26px" style-hover="border-color:rgba(198,245,66,0.35);transform:translateY(-4px)">
+    <div style="background:#12141b;border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:26px" class="mqh6">
       <h3 style="font-size:18px;font-weight:700;margin:0 0 9px;color:#c6f542">거래명세서 발행</h3>
       <p style="font-size:15px;color:#9096a1;line-height:1.65;margin:0">고객사에 보낼 명세서·청구서를 클릭 한 번에. 대대행 구조도 그대로 지원.</p>
     </div>
-    <div style="background:#12141b;border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:26px" style-hover="border-color:rgba(198,245,66,0.35);transform:translateY(-4px)">
+    <div style="background:#12141b;border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:26px" class="mqh6">
       <h3 style="font-size:18px;font-weight:700;margin:0 0 9px;color:#c6f542">원천징수 영수증</h3>
       <p style="font-size:15px;color:#9096a1;line-height:1.65;margin:0">모델 지급 시 자동 계산·발송. 외국인 단기체류 원천징수까지 한 번에.</p>
     </div>
-    <div style="background:#12141b;border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:26px" style-hover="border-color:rgba(198,245,66,0.35);transform:translateY(-4px)">
+    <div style="background:#12141b;border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:26px" class="mqh6">
       <h3 style="font-size:18px;font-weight:700;margin:0 0 9px;color:#c6f542">패키지 메일 발송</h3>
       <p style="font-size:15px;color:#9096a1;line-height:1.65;margin:0">여러 모델을 묶은 제안서를 메일 한 번에. 고객사가 열어봤는지까지 추적.</p>
     </div>
@@ -193,27 +209,27 @@
     <h2 style="font-size:clamp(28px,4.4vw,46px);font-weight:800;letter-spacing:-0.025em;line-height:1.15;margin:0">섭외부터 정산까지, 빠짐없이 관리합니다</h2>
   </div>
   <div style="display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
-    <div style="background:#12141b;border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:28px" style-hover="border-color:rgba(198,245,66,0.35);transform:translateY(-4px)">
+    <div style="background:#12141b;border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:28px" class="mqh6">
       <h3 style="font-size:19px;font-weight:700;margin:0 0 10px">더블부킹·HOLD 충돌 감지</h3>
       <p style="font-size:15px;color:#9096a1;line-height:1.65;margin:0">겹치는 시간에 잡히면 예약 확정 전에 경고해 위약금 사고를 막습니다.</p>
     </div>
-    <div style="background:#12141b;border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:28px" style-hover="border-color:rgba(198,245,66,0.35);transform:translateY(-4px)">
+    <div style="background:#12141b;border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:28px" class="mqh6">
       <h3 style="font-size:19px;font-weight:700;margin:0 0 10px">스마트 정산</h3>
       <p style="font-size:15px;color:#9096a1;line-height:1.65;margin:0">수수료와 모델 지급액 자동 계산. 당일 초과분(연장·추가 컷·영상)까지 반영.</p>
     </div>
-    <div style="background:#12141b;border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:28px" style-hover="border-color:rgba(198,245,66,0.35);transform:translateY(-4px)">
+    <div style="background:#12141b;border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:28px" class="mqh6">
       <h3 style="font-size:19px;font-weight:700;margin:0 0 10px">외국인 모델 비자 관리</h3>
       <p style="font-size:15px;color:#9096a1;line-height:1.65;margin:0">입출국일·비자 타입(C-4,E-6 등) 추적.<br>체류 초과 섭외는 예약 전 경고.</p>
     </div>
-    <div style="background:#12141b;border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:28px" style-hover="border-color:rgba(198,245,66,0.35);transform:translateY(-4px)">
+    <div style="background:#12141b;border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:28px" class="mqh6">
       <h3 style="font-size:19px;font-weight:700;margin:0 0 10px">섭외 라이프사이클</h3>
       <p style="font-size:15px;color:#9096a1;line-height:1.65;margin:0">문의 → 견적 → 일정 → 계약 → 촬영 → 정산을 <br>한 화면에서 추적.</p>
     </div>
-    <div style="background:#12141b;border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:28px" style-hover="border-color:rgba(198,245,66,0.35);transform:translateY(-4px)">
+    <div style="background:#12141b;border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:28px" class="mqh6">
       <h3 style="font-size:19px;font-weight:700;margin:0 0 10px;display:flex;align-items:center;gap:8px;flex-wrap:wrap">캘린더 연동 + 카카오톡 알림 <span style="font-size:11px;font-weight:700;color:#0a0c10;background:#c6f542;border-radius:999px;padding:2px 8px">카카오톡 예정</span></h3>
       <p style="font-size:15px;color:#9096a1;line-height:1.65;margin:0">섭외 확정·변경 시 구글 캘린더 자동 연동. <br>카카오톡 알림 발송은 곧 지원 예정.</p>
     </div>
-    <div style="background:#12141b;border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:28px" style-hover="border-color:rgba(198,245,66,0.35);transform:translateY(-4px)">
+    <div style="background:#12141b;border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:28px" class="mqh6">
       <h3 style="font-size:19px;font-weight:700;margin:0 0 10px">대표 실시간 대시보드</h3>
       <p style="font-size:15px;color:#9096a1;line-height:1.65;margin:0">실매출·예상매출·미수금·진행중 섭외를 <br>3초 만에 파악.</p>
     </div>
@@ -429,8 +445,8 @@
       <h2 style="font-size: clamp(28px,4.6vw,52px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; margin: 0 0 20px; position: relative">내일 아침부터,<br>엑셀 대신 <span style="color: rgb(198, 245, 66); width: 178px; height: 59px">Modiq</span>로 시작하세요</h2>
       <p style="font-size:clamp(16px,2vw,19px);color:#9aa0ab;line-height:1.65;max-width:560px;margin:0 auto 36px">60일 무료. 신용카드도, 설치도 필요 없습니다. <br>오늘 등록한 모델로 바로 첫 컴카드를 발송할 수 있습니다.</p>
       <div style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center;align-items:center">
-        <a href="https://modiq.kr" style="background:#c6f542;color:#0a0c10;font-weight:700;font-size:16px;padding:16px 30px;border-radius:999px;box-shadow:0 10px 34px rgba(198,245,66,0.3)" style-hover="filter:brightness(1.06);transform:translateY(-1px)">60일 무료로 시작하기</a>
-        <a href="#top" style="background:rgba(255,255,255,0.04);color:#f2f4f7;font-weight:600;font-size:16px;padding:16px 26px;border-radius:999px;border:1px solid rgba(255,255,255,0.14)" style-hover="background:rgba(255,255,255,0.08)">데모 먼저 보기</a>
+        <a href="https://modiq.kr" style="background:#c6f542;color:#0a0c10;font-weight:700;font-size:16px;padding:16px 30px;border-radius:999px;box-shadow:0 10px 34px rgba(198,245,66,0.3)" class="mqh4">60일 무료로 시작하기</a>
+        <a href="#top" style="background:rgba(255,255,255,0.04);color:#f2f4f7;font-weight:600;font-size:16px;padding:16px 26px;border-radius:999px;border:1px solid rgba(255,255,255,0.14)" class="mqh5">데모 먼저 보기</a>
       </div>
       <div style="display:flex;flex-wrap:wrap;gap:10px 26px;justify-content:center;margin-top:26px;font-size:14px;color:#7f8593">
         <span style="display:flex;align-items:center;gap:7px"><span style="color:#c6f542">✓</span> 60일 무료 체험</span>

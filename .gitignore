@@ -1,0 +1,13 @@
+# Claude Design 원본 (로컬 보관 · 커밋 제외)
+MODIQ 랜딩페이지.html
+*.dc.html
+*.dc.json
+*.bundler.html
+
+# 빌드/검증 임시 산출물
+_*.cjs
+_*.tmp.html
+_v_*.png
+
+# OS
+.DS_Store
