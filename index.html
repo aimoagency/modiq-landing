@@ -15,17 +15,22 @@
   ::selection{background:#c6f542;color:#0a0c10}
   @keyframes mq-glow{0%,100%{opacity:.45}50%{opacity:.8}}
   @media (prefers-reduced-motion: reduce){*{animation-duration:.001ms!important;transition-duration:.001ms!important}}
+  /* 기본: 데스크톱은 햄버거 숨김, 모바일 메뉴/닫기아이콘 숨김 (인라인 display 미사용 → 스타일시트가 제어) */
+  #nav-hamburger{display:none}
+  #nav-mobile-menu{display:none}
+  .mq-ico-close{display:none}
   @media (max-width:640px){
     #nav-compare-link{display:none}
     #nav-version{display:none}
-    #nav-hamburger{display:inline-flex!important}
+    #nav-hamburger{display:inline-flex}
   }
+  /* 열림 상태는 헤더 클래스로 제어 */
+  #site-header.menu-open #nav-mobile-menu{display:flex}
+  #site-header.menu-open .mq-ico-open{display:none}
+  #site-header.menu-open .mq-ico-close{display:inline-flex}
   @media (min-width:641px){
-    #nav-mobile-menu{display:none!important}
+    #nav-mobile-menu, #site-header.menu-open #nav-mobile-menu{display:none}
   }
-
-  #nav-mobile-menu:not(.open){display:none!important}
-  #nav-mobile-menu.open{display:flex!important}
 
   /* hover 복원 — Design 원본 style-hover 스펙을 CSS :hover로 이관 (색상 토큰 유지) */
   .mqh1{transition:filter .18s ease, transform .18s ease, background-color .18s ease, border-color .18s ease, color .18s ease}
@@ -48,7 +53,7 @@
 <div style="width:100%;overflow-x:hidden">
 
 <!-- NAV -->
-<header style="position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(8,10,15,0.72);border-bottom:1px solid rgba(255,255,255,0.06)">
+<header id="site-header" style="position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(8,10,15,0.72);border-bottom:1px solid rgba(255,255,255,0.06)">
   <nav style="max-width:1180px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px">
     <div style="display:flex;align-items:center;gap:20px">
       <a href="#top" class="mq-logo" style="display:flex;flex-direction:column;line-height:1;text-decoration:none">
@@ -60,20 +65,20 @@
     <div style="display:flex;align-items:center;gap:10px">
       <a id="nav-compare-link" href="#compare" style="color:#9096a1;font-size:14px;font-weight:500;padding:8px 10px" class="mqh1">해외 툴 비교</a>
       <a href="https://modiq.kr" style="background:#c6f542;color:#0a0c10;font-weight:700;font-size:14px;padding:11px 18px;border-radius:999px;box-shadow:0 6px 22px rgba(198,245,66,0.22)" class="mqh2">60일 무료로 시작</a>
-      <button id="nav-hamburger" onclick="mqToggleMenu()" aria-label="메뉴 열기" aria-expanded="false" style="display:none;align-items:center;justify-content:center;width:44px;height:44px;margin:-4px -8px -4px 2px;background:none;border:none;cursor:pointer;color:#f2f4f7">
-        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-          
-          
-            <line x1="3" y1="6" x2="19" y2="6"></line><line x1="3" y1="11" x2="19" y2="11"></line><line x1="3" y1="16" x2="19" y2="16"></line>
-          
+      <button id="nav-hamburger" type="button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="nav-mobile-menu" style="align-items:center;justify-content:center;width:44px;height:44px;margin:-4px -8px -4px 2px;background:none;border:none;cursor:pointer;color:#f2f4f7">
+        <svg class="mq-ico-open" width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <line x1="3" y1="6" x2="19" y2="6"></line><line x1="3" y1="11" x2="19" y2="11"></line><line x1="3" y1="16" x2="19" y2="16"></line>
+        </svg>
+        <svg class="mq-ico-close" width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <line x1="4" y1="4" x2="18" y2="18"></line><line x1="18" y1="4" x2="4" y2="18"></line>
         </svg>
       </button>
     </div>
   </nav>
   
-  <div id="nav-mobile-menu" style="border-top:1px solid rgba(255,255,255,0.06);padding:8px 16px 16px;display:flex;flex-direction:column;gap:4px">
-    <a href="#compare" onclick="mqCloseMenu()" style="color:#c3c8d1;font-size:16px;font-weight:500;padding:14px 8px;border-radius:12px" class="mqh3">해외 툴 비교</a>
-    <a href="#start" onclick="mqCloseMenu()" style="color:#c3c8d1;font-size:16px;font-weight:500;padding:14px 8px;border-radius:12px" class="mqh3">요금 안내</a>
+  <div id="nav-mobile-menu" style="border-top:1px solid rgba(255,255,255,0.06);padding:8px 16px 16px;flex-direction:column;gap:4px">
+    <a href="#compare" style="color:#c3c8d1;font-size:16px;font-weight:500;padding:14px 8px;border-radius:12px" class="mqh3">해외 툴 비교</a>
+    <a href="#start" style="color:#c3c8d1;font-size:16px;font-weight:500;padding:14px 8px;border-radius:12px" class="mqh3">요금 안내</a>
     <a href="https://modiq.kr" style="margin-top:6px;text-align:center;background:#c6f542;color:#0a0c10;font-weight:700;font-size:16px;padding:15px 18px;border-radius:999px">60일 무료로 시작</a>
   </div>
   
@@ -483,8 +488,15 @@
 </div>
 
 <script>
-  function mqToggleMenu(){var m=document.getElementById('nav-mobile-menu'),b=document.getElementById('nav-hamburger');if(!m)return;var open=m.classList.toggle('open');if(b)b.setAttribute('aria-expanded',open?'true':'false');}
-  function mqCloseMenu(){var m=document.getElementById('nav-mobile-menu'),b=document.getElementById('nav-hamburger');if(m)m.classList.remove('open');if(b)b.setAttribute('aria-expanded','false');}
+  (function(){
+    var hdr=document.getElementById('site-header'), btn=document.getElementById('nav-hamburger');
+    if(!hdr||!btn) return;
+    function set(open){ hdr.classList.toggle('menu-open', open); btn.setAttribute('aria-expanded', open?'true':'false'); btn.setAttribute('aria-label', open?'메뉴 닫기':'메뉴 열기'); }
+    btn.addEventListener('click', function(e){ e.preventDefault(); set(!hdr.classList.contains('menu-open')); });
+    Array.prototype.forEach.call(document.querySelectorAll('#nav-mobile-menu a'), function(a){ a.addEventListener('click', function(){ set(false); }); });
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape') set(false); });
+    window.addEventListener('resize', function(){ if(window.innerWidth>640) set(false); });
+  })();
   (function(){var v=document.getElementById('comcardVideo');if(!v)return;v.muted=true;var play=function(){var p=v.play();if(p&&p.catch)p.catch(function(){});};if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)play();else v.pause();});},{threshold:0.25});io.observe(v);}else{play();}})();
 </script>
 </body>
