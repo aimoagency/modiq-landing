@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Modiq — 국내 모델 에이전시 전용 운영 SaaS</title>
 <meta name="description" content="모델 검색·맞춤형 컴카드 제작·광고주 발송·견적·계약서·세금계산서·원천징수까지. 국내 모델 에이전시 전용 운영 SaaS, 모딕. 신용카드 없이 60일 무료.">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
 <style>
   *{box-sizing:border-box}
@@ -48,6 +49,30 @@
   .mqh5:hover{background:rgba(255,255,255,0.08) !important}
   .mqh6{transition:filter .18s ease,transform .18s ease,background-color .18s ease,border-color .18s ease,color .18s ease}
   .mqh6:hover{border-color:rgba(198,245,66,0.35) !important;transform:translateY(-4px) !important}
+
+  /* 비교표 — 모바일에서는 3열 대신 항목별 카드로 재배치 */
+  @media (max-width:640px){
+    .mq-cmp-head{display:none!important}
+    .mq-cmp-body{grid-template-columns:1fr!important}
+    .mq-cmp-body>*{border-left:none!important;padding:12px 18px!important}
+    /* 항목명 = 카드 머리 */
+    .mq-cmp-body>*:nth-child(3n+1){
+      padding:16px 18px 10px!important;font-size:15px!important;font-weight:700!important;
+      color:#f2f4f7!important;border-bottom:none!important;
+    }
+    .mq-cmp-body>*:nth-child(3n+1):not(:first-child){
+      margin-top:10px;border-top:1px solid rgba(255,255,255,0.08);padding-top:20px!important;
+    }
+    /* 각 진영 값 앞에 출처 라벨 */
+    .mq-cmp-body>*:nth-child(3n+2)::before,
+    .mq-cmp-body>*:nth-child(3n+3)::before{
+      display:block;font-size:11px;font-weight:700;letter-spacing:0.04em;margin-bottom:5px;
+    }
+    .mq-cmp-body>*:nth-child(3n+2)::before{content:"해외 범용 툴";color:#6b7180}
+    .mq-cmp-body>*:nth-child(3n+3)::before{content:"모딕 (MODIQ)";color:#c6f542}
+    .mq-cmp-body>*:nth-child(3n+2){border-bottom:none!important;padding-bottom:6px!important}
+    .mq-cmp-body>*:nth-child(3n+3){border-radius:12px;margin:0 12px 4px!important;padding:12px 14px!important}
+  }
 </style>
 </head>
 <body>
@@ -120,7 +145,7 @@
         <span style="width:11px;height:11px;border-radius:50%;background:#28c840;display:inline-block"></span>
         <div style="margin-left:14px;font-family:ui-monospace,monospace;font-size:12px;color:#6b7180">modiq.app · 대시보드</div>
       </div>
-      <img src="assets/dashboard.png" alt="Modiq 대시보드 화면 — 매출·미수금·입금 확인 실시간 정리" style="display:block;width:100%;height:auto">
+      <img src="assets/dashboard.png" fetchpriority="high" decoding="async" alt="Modiq 대시보드 화면 — 매출·미수금·입금 확인 실시간 정리" style="display:block;width:100%;height:auto">
     </div>
     <p style="font-size:14px;color:#7f8593;line-height:1.6;margin:18px auto 0;max-width:560px">매출 현황과 미수금, 입금 확인이 필요한 건까지 — 대표가 봐야 할 숫자가 실시간으로 정돈되어 한 화면에 꽂힙니다.</p>
   </div>
@@ -210,7 +235,7 @@
     <div style="position:relative;max-width:1080px;margin:0 auto">
       <div style="position:absolute;inset:-6%;background:radial-gradient(60% 60% at 50% 40%,rgba(91,140,255,0.18),transparent 70%);filter:blur(24px);z-index:0;pointer-events:none"></div>
       <div style="position:relative;z-index:1;border:1px solid rgba(255,255,255,0.1);border-radius:18px;overflow:hidden;background:#0d0f15;box-shadow:0 40px 110px rgba(0,0,0,0.6)">
-        <video id="comcardVideo" poster="assets/comcard-poster.png" src="assets/comcard-demo.mp4" autoplay="" muted="" loop="" playsinline="" controls="" preload="auto" style="display:block;width:100%;height:auto;background:#0d0f15"></video>
+        <video id="comcardVideo" data-poster="assets/comcard-poster.jpg" data-src="assets/comcard-demo.mp4" muted="" loop="" playsinline="" controls="" preload="none" style="display:block;width:100%;height:auto;background:#0d0f15"></video>
       </div>
     </div>
   </div>
@@ -223,7 +248,7 @@
       <div style="position:absolute;inset:6% 0;background:radial-gradient(50% 50% at 50% 40%,rgba(198,245,66,0.14),transparent 70%);filter:blur(24px);z-index:0;pointer-events:none"></div>
       <div style="position:relative;z-index:1;width:min(300px,82%);border:10px solid #16181f;border-radius:44px;background:#0b0d12;box-shadow:0 40px 100px rgba(0,0,0,0.6),inset 0 0 0 1px rgba(255,255,255,0.06);padding:10px 0">
         <div style="height:600px;overflow-y:auto;overflow-x:hidden;border-radius:32px;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,0.18) transparent">
-          <img src="assets/mobile-dashboard.png" alt="Modiq 모바일 대시보드" style="display:block;width:100%;height:auto">
+          <img src="assets/mobile-dashboard.png" loading="lazy" decoding="async" alt="Modiq 모바일 대시보드" style="display:block;width:100%;height:auto">
         </div>
       </div>
     </div>
@@ -259,7 +284,7 @@
     </div>
 
     <div style="max-width:960px;margin:0 auto;border:1px solid rgba(255,255,255,0.08);border-radius:20px;overflow:hidden;background:#0d0f15">
-      <div style="display:grid;grid-template-columns:minmax(96px,1fr) 1.5fr 1.5fr">
+      <div class="mq-cmp-head" style="display:grid;grid-template-columns:minmax(96px,1fr) 1.5fr 1.5fr">
         <div style="padding:20px 22px;border-bottom:1px solid rgba(255,255,255,0.08)"></div>
         <div style="padding:20px 22px;border-bottom:1px solid rgba(255,255,255,0.08);border-left:1px solid rgba(255,255,255,0.06)">
           <div style="font-size:15px;font-weight:700;color:#c3c8d1">해외 범용 툴</div>
@@ -270,7 +295,7 @@
           <div style="font-size:12px;color:#a9c26a;margin-top:3px">한국 모델 에이전시 전용</div>
         </div>
       </div>
-      <div style="display:grid;grid-template-columns:minmax(96px,1fr) 1.5fr 1.5fr">
+      <div class="mq-cmp-body" style="display:grid;grid-template-columns:minmax(96px,1fr) 1.5fr 1.5fr">
         <div style="padding:18px 22px;font-size:14px;font-weight:600;color:#8b909b;border-bottom:1px solid rgba(255,255,255,0.05)">한국형 세무 정산</div>
         <div style="padding:18px 22px;font-size:15px;color:#7f8593;border-bottom:1px solid rgba(255,255,255,0.05);border-left:1px solid rgba(255,255,255,0.06)"><span style="color:#f56b6b;margin-right:8px">✕</span>미지원 (미국 1099 기준)</div>
         <div style="padding:18px 22px;font-size:15px;font-weight:600;color:#eef2f5;border-bottom:1px solid rgba(198,245,66,0.14);background:rgba(198,245,66,0.06)"><span style="color:#c6f542;margin-right:8px">✓</span>3.3% / 20% 원천세 자동 계산 및 영수증 발급</div>
@@ -281,7 +306,7 @@
 
         <div style="padding:18px 22px;font-size:14px;font-weight:600;color:#8b909b;border-bottom:1px solid rgba(255,255,255,0.05)">실시간 알림 연동</div>
         <div style="padding:18px 22px;font-size:15px;color:#7f8593;border-bottom:1px solid rgba(255,255,255,0.05);border-left:1px solid rgba(255,255,255,0.06)"><span style="color:#f56b6b;margin-right:8px">✕</span>이메일 위주</div>
-        <div style="padding:18px 22px;font-size:15px;font-weight:600;color:#eef2f5;border-bottom:1px solid rgba(198,245,66,0.14);background:rgba(198,245,66,0.06)"><span style="color:#c6f542;margin-right:8px">✓</span>구글 캘린더 자동 연동 <span style="font-size:11px;font-weight:700;color:#c3c8d1;background:rgba(255,255,255,0.09);border:1px solid rgba(255,255,255,0.14);border-radius:999px;padding:2px 8px;margin-left:6px;vertical-align:middle">카카오톡 알림 출시 예정</span></div>
+        <div style="padding:18px 22px;font-size:15px;font-weight:600;color:#eef2f5;border-bottom:1px solid rgba(198,245,66,0.14);background:rgba(198,245,66,0.06)"><span style="color:#c6f542;margin-right:8px">✓</span>구글 캘린더 자동 연동 <span style="font-size:11px;font-weight:700;color:#c3c8d1;background:rgba(255,255,255,0.09);border:1px solid rgba(255,255,255,0.14);border-radius:999px;padding:2px 8px;margin-left:6px;vertical-align:middle;display:inline-block;white-space:nowrap">카카오톡 알림 출시 예정</span></div>
 
         <div style="padding:18px 22px;font-size:14px;font-weight:600;color:#8b909b;border-bottom:1px solid rgba(255,255,255,0.05)">서류 자동 발행</div>
         <div style="padding:18px 22px;font-size:15px;color:#7f8593;border-bottom:1px solid rgba(255,255,255,0.05);border-left:1px solid rgba(255,255,255,0.06)"><span style="color:#f56b6b;margin-right:8px">✕</span>양식 직접 코딩 필요</div>
@@ -395,7 +420,7 @@
   <div style="max-width:1180px;margin:0 auto 28px;font-size:12px;color:#5a5f6a;line-height:1.7">modiq는 세무 대리 서비스가 아니며, 제공되는 정산·세무 계산은 참고용입니다. 최종 세무 신고는 세무 전문가와 함께 진행하시기 바랍니다. 모든 가격은 부가세 별도입니다.</div>
   <div style="max-width:1180px;margin:0 auto;display:flex;flex-wrap:wrap;gap:28px;align-items:center;justify-content:space-between">
     <div style="display:flex;align-items:center;gap:16px">
-      <img src="assets/logo.jpg" alt="Modiq" style="width:52px;height:52px;border-radius:12px;display:block">
+      <img src="assets/logo.jpg" loading="lazy" decoding="async" alt="Modiq" style="width:52px;height:52px;border-radius:12px;display:block">
       <div style="display:flex;flex-direction:column;line-height:1.2">
         <span style="font-weight:800;font-size:18px;color:#f2f4f7">modiq</span>
         <span style="font-size:13px;color:#7f8593">한국 모델 에이전시를 위한 올인원 운영 시스템</span>
@@ -425,6 +450,17 @@ function mqCloseMenu(){
   h.classList.remove('menu-open');
   if(b){ b.setAttribute('aria-expanded','false'); b.setAttribute('aria-label','메뉴 열기'); }
 }
+
+function mqLazyVideo(){
+  var v=document.getElementById('comcardVideo'); if(!v) return;
+  var load=function(){ if(v.dataset.poster){ v.poster=v.dataset.poster; delete v.dataset.poster; } if(v.dataset.src){ v.src=v.dataset.src; delete v.dataset.src; v.play().catch(function(){}); } };
+  if(!('IntersectionObserver' in window)){ load(); return; }
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ load(); io.disconnect(); } });
+  },{rootMargin:'300px'});
+  io.observe(v);
+}
+mqLazyVideo();
 </script>
 </body>
 </html>
