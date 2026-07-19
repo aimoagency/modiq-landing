@@ -235,7 +235,7 @@
     <div style="position:relative;max-width:1080px;margin:0 auto">
       <div style="position:absolute;inset:-6%;background:radial-gradient(60% 60% at 50% 40%,rgba(91,140,255,0.18),transparent 70%);filter:blur(24px);z-index:0;pointer-events:none"></div>
       <div style="position:relative;z-index:1;border:1px solid rgba(255,255,255,0.1);border-radius:18px;overflow:hidden;background:#0d0f15;box-shadow:0 40px 110px rgba(0,0,0,0.6)">
-        <video id="comcardVideo" data-poster="assets/comcard-poster.jpg" data-src="assets/comcard-demo.mp4" muted="" loop="" playsinline="" controls="" preload="none" style="display:block;width:100%;height:auto;background:#0d0f15"></video>
+        <video id="comcardVideo" data-src="assets/comcard-demo.mp4" muted="" loop="" playsinline="" controls="" preload="none" style="display:block;width:100%;height:auto;aspect-ratio:3584/2240;background:#0d0f15"></video>
       </div>
     </div>
   </div>
@@ -453,7 +453,7 @@ function mqCloseMenu(){
 
 function mqLazyVideo(){
   var v=document.getElementById('comcardVideo'); if(!v) return;
-  var load=function(){ if(v.dataset.poster){ v.poster=v.dataset.poster; delete v.dataset.poster; } if(v.dataset.src){ v.src=v.dataset.src; delete v.dataset.src; v.play().catch(function(){}); } };
+  var load=function(){ if(v.dataset.src){ v.src=v.dataset.src; delete v.dataset.src; v.play().catch(function(){}); } };
   if(!('IntersectionObserver' in window)){ load(); return; }
   var io=new IntersectionObserver(function(es){
     es.forEach(function(e){ if(e.isIntersecting){ load(); io.disconnect(); } });
