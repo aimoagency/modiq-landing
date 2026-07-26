@@ -79,6 +79,14 @@
     .mq-cmp-body>*:nth-child(3n+2){border-bottom:none!important;padding-bottom:6px!important}
     .mq-cmp-body>*:nth-child(3n+3){border-radius:12px;margin:0 12px 4px!important;padding:12px 14px!important}
   }
+
+  /* 푸터 — 넓은 화면은 좌(로고)·우(사업자 정보) 배치, 좁은 화면은 좌측 정렬 스택 */
+  @media (max-width:720px){
+    .mq-foot-top{flex-direction:column;align-items:flex-start!important;gap:22px!important}
+    .mq-foot-biz{text-align:left!important}
+    .mq-foot-biz .mq-foot-row{justify-content:flex-start!important}
+    .mq-foot-bottom{flex-direction:column;align-items:flex-start!important;gap:14px!important}
+  }
 </style>
 </head>
 <body>
@@ -432,27 +440,36 @@
 
 <!-- FOOTER -->
 <footer style="border-top:1px solid rgba(255,255,255,0.06);padding:52px 24px">
-  <div style="max-width:1180px;margin:0 auto;display:flex;flex-wrap:wrap;gap:28px;align-items:center;justify-content:space-between">
+  <!-- 상단: 좌 = 브랜드 / 우 = 사업자 정보 한 묶음 -->
+  <div class="mq-foot-top" style="max-width:1180px;margin:0 auto;display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start;justify-content:space-between">
     <div style="display:flex;align-items:center;gap:16px">
       <img src="assets/logo.jpg" loading="lazy" decoding="async" alt="modiq" style="width:52px;height:52px;border-radius:12px;display:block">
-      <div style="display:flex;flex-direction:column;line-height:1.2">
+      <div style="display:flex;flex-direction:column;line-height:1.25">
         <span style="font-weight:800;font-size:18px;color:#f2f4f7">modiq</span>
+        <span style="font-size:11.5px;font-weight:600;letter-spacing:0.08em;color:#6b7180;margin-top:5px">Talent Agency OS</span>
       </div>
     </div>
-    <div style="font-size:13px;color:#6b7180;text-align:right;line-height:1.85">
-      <div style="display:flex;flex-wrap:wrap;gap:4px 16px;justify-content:flex-end;margin-bottom:8px">
-        <span>사업자명 : (주)스페이스재형</span>
-        <span>대표 : 배재형</span>
-        <span>사업자번호 : 8907-86-02371</span>
+    <div class="mq-foot-biz" style="font-size:13px;color:#6b7180;text-align:right;line-height:1.9">
+      <div class="mq-foot-row" style="display:flex;flex-wrap:wrap;align-items:center;gap:2px 12px;justify-content:flex-end">
+        <span>사업자명 <span style="color:#9096a1">(주)스페이스재형</span></span>
+        <span style="color:#3a3f4a">|</span>
+        <span>대표 <span style="color:#9096a1">배재형</span></span>
+        <span style="color:#3a3f4a">|</span>
+        <span>사업자등록번호 <span style="color:#9096a1">897-86-02371</span></span>
       </div>
-      <div style="margin-bottom:8px">주소 : 서울 강남구 논현로150길 26</div>
-      <div>© 2026 modiq · Talent Agency OS</div>
+      <div>주소 <span style="color:#9096a1">서울 강남구 논현로150길 26, 5층</span></div>
     </div>
   </div>
-  <div style="max-width:1180px;margin:24px auto 0;padding-top:20px;border-top:1px solid rgba(255,255,255,0.06);display:flex;flex-wrap:wrap;gap:10px 22px;font-size:13px">
-    <a href="/privacy" style="color:#9096a1;font-weight:600" class="mqh1">개인정보처리방침</a>
-    <a href="/terms" style="color:#9096a1;font-weight:600" class="mqh1">서비스 이용약관</a>
-    <a href="mailto:info@modiq.kr" style="color:#9096a1;font-weight:600" class="mqh1">문제 신고</a>
+  <!-- 하단: 좌 = 정책 링크 / 우 = 저작권 -->
+  <div class="mq-foot-bottom" style="max-width:1180px;margin:26px auto 0;padding-top:20px;border-top:1px solid rgba(255,255,255,0.06);display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center;justify-content:space-between;font-size:13px">
+    <div style="display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px">
+      <a href="/privacy" style="color:#9096a1;font-weight:600" class="mqh1">개인정보처리방침</a>
+      <span style="color:#3a3f4a">·</span>
+      <a href="/terms" style="color:#9096a1;font-weight:600" class="mqh1">서비스 이용약관</a>
+      <span style="color:#3a3f4a">·</span>
+      <a href="mailto:info@modiq.kr" style="color:#9096a1;font-weight:600" class="mqh1">문제 신고</a>
+    </div>
+    <div style="color:#6b7180">© 2026 modiq</div>
   </div>
 </footer>
 
