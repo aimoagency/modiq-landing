@@ -1,4 +1,10 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "cleanUrls": true
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/api/gcal-oauth",
+      "destination": "https://fijtpyrmqzjefucsqfos.supabase.co/functions/v1/gcal-oauth"
+    }
+  ]
 }
