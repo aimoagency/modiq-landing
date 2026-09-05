@@ -644,6 +644,13 @@
 
 </div>
 <script>
+// UTM 패스스루 — 랜딩 URL의 utm_* 를 app.modiq.kr 링크에 그대로 붙임 (콜드메일 → 가입 추적)
+(function(){
+  var u=new URLSearchParams(location.search), q=new URLSearchParams();
+  u.forEach(function(v,k){ if(/^utm_/i.test(k)&&v) q.set(k,v); });
+  if(![].concat.apply([],[q.keys()]).length) return;
+  document.querySelectorAll('a[href^="https://app.modiq.kr"]').forEach(function(a){ var x=new URL(a.href); q.forEach(function(v,k){ x.searchParams.set(k,v); }); a.href=x.toString(); });
+})();
 function mqToggleMenu(btn){
   var h=document.getElementById('site-header'), open=h.classList.toggle('menu-open');
   btn.setAttribute('aria-expanded', open?'true':'false');
